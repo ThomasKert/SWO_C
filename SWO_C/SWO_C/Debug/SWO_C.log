@@ -1,2 +1,7 @@
 ﻿  main.c
+C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\SWO_C\cstrings.h(12,37): warning C4047: "!=": Anzahl der Dereferenzierungen bei "int" und "void *" unterschiedlich
+C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\SWO_C\cstrings.h(46,22): warning C4047: "!=": Anzahl der Dereferenzierungen bei "int" und "void *" unterschiedlich
+C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\SWO_C\cstrings.h(50,22): warning C4047: "!=": Anzahl der Dereferenzierungen bei "int" und "void *" unterschiedlich
+C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\SWO_C\cstrings.h(98,16): warning C4018: "<=": Konflikt zwischen "signed" und "unsigned"
+C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\SWO_C\cstrings.h(103,16): warning C4018: "<=": Konflikt zwischen "signed" und "unsigned"
   SWO_C.vcxproj -> C:\Users\thoma\Documents\GitHub\SWO_C\SWO_C\Debug\SWO_C.exe
