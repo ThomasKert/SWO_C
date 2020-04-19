@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int getStringLength(char *cstring) {
+int getStringLength(char* cstring) {
   int length = 0;
   if (cstring == NULL) {
     return 0;
@@ -14,10 +14,10 @@ int getStringLength(char *cstring) {
   }
   return length;
 }
-void printString(char *cstring) {
+void printString(char* cstring) {
   int length = getStringLength(cstring);
   for (int i = 0; i < length; i++) {
-      printf("%c", *(cstring + i));
+    printf("%c", *(cstring + i));
   }
   printf("\n");
 }
@@ -37,13 +37,13 @@ char* addString(char* a, char* b) {
   return result;
 }
 
-char* mixString(char *a, char *b) {
+char* mixString(char* a, char* b) {
   int i = 0;
   int curLength = 0;
   int resLength = getStringLength(a) + getStringLength(b);
   char* result = malloc((resLength + 1) * sizeof(char));
   while (curLength < resLength) {
-    if (a[i] != NULL && i < getStringLength(a)){
+    if (a[i] != NULL && i < getStringLength(a)) {
       result[curLength] = a[i];
       curLength++;
     }
@@ -85,14 +85,17 @@ bool compareStrings(char* string1, char* string2) {
     maxLength = getStringLength(string2);
   }
   for (int i = 0; i < maxLength; i++) {
-    if (string1[i] != string2[i]){
+    if (string1[i] != string2[i]) {
       return false;
     }
   }
   return true;
 }
 
-char* stringCopy(char* copyFrom, char *copyTo, size_t n) {
+//die Implementierung der Stringcopy Funktionen ist deshalb hier so kompliziert weil 
+//es möglich ist einen String auf einen anderen "draufzukopieren", sprich wenn copyTo "aaa"
+//und copyFrom "bbb" ist bei n=5 ist der Output "aaabb"
+char* stringCopy(char* copyFrom, char* copyTo, size_t n) {
   int index = 0;
   char* result = malloc((n) * sizeof(char));
   while (index <= n && index < getStringLength(copyTo)) {
@@ -107,6 +110,24 @@ char* stringCopy(char* copyFrom, char *copyTo, size_t n) {
   }
   result[n] = '\0';
   return result;
+}
+
+void stringCopyReference(char* copyFrom, char** copyTo, size_t n) {
+  int index = 0;
+  char* oldCopy = *copyTo;
+  char* result = malloc((n) * sizeof(char));
+  while (index <= n && index < getStringLength(oldCopy)) {
+    result[index] = oldCopy[index];
+    index++;
+  }
+  int secondIndex = 0;
+  while (index <= n && index < (getStringLength(copyFrom) + getStringLength(*copyTo))) {
+    result[index] = copyFrom[secondIndex];
+    secondIndex++;
+    index++;
+  }
+  result[n] = '\0';
+  *copyTo = result;
 }
 
 bool containsChar(char* string, char c) {

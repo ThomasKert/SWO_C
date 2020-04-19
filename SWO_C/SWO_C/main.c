@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include "cstrings.h"
+#pragma once
+#include "cstring.h"
+#include "Nachklausur2019.h"
 
 void testStringFunctions() {
   char cstring[] = "aaaaaaa";
@@ -48,19 +49,66 @@ void testStringFunctions() {
       printf("%d\n", compareStrings("aaa", "bbb"));
     printf("aaa = aab:\n");
       printf("%d\n", compareStrings("aaa", "aab"));
-    //ToTest:
     res = "aaccddeeffgghh";
     printf("Testing contains and count with \"aaccddeeffgghh\":\n");
-    printf("containsChar e: %d\n", containsChar(res, 'e'));
-    printf("containsChar b: %d\n", containsChar(res, 'b'));
-    printf("countChar e: %d\n", countChar(res, 'e'));
-    printf("countChar b: %d\n", countChar(res, 'b'));
-      //StringCount
+      printf("containsChar e: %d\n", containsChar(res, 'e'));
+      printf("containsChar b: %d\n", containsChar(res, 'b'));
+      printf("containsChar a: %d\n", containsChar(res, 'a'));
+      printf("containsChar h: %d\n", containsChar(res, 'h'));
+      printf("countChar e: %d\n", countChar(res, 'e'));
+      printf("countChar b: %d\n", countChar(res, 'b'));
+      printf("countChar a: %d\n", countChar(res, 'a'));
+      printf("countChar h: %d\n", countChar(res, 'h'));
+      printf("Some tests, need to be changed later:\n");
+        char* test = "iuzfhs";
+        stringCopyReference(test, &test, 10);
+        printString(test);
 }
+
+void testNachklausur2019() {
+  int size_a = 5;
+  int size_a1 = 0;
+  int size_a2 = 0;
+  int* a1 = 0;
+  int* a2 = 0;
+  int size_b = 3;
+  int size = 0;
+  int* a = malloc(size_a * sizeof(int));
+    a[0] = 2;
+    a[1] = 9;
+    a[2] = 32;
+    a[3] = 1;
+    a[4] = 17;
+  int* b = malloc(size_b * sizeof(int));
+    b[0] = 111;
+    b[1] = 222;
+    b[2] = 111;
+
+  int* res = arrcat(a, size_a, b, size_b, &size);
+    printf("printing Result:\n");
+      for (int i = 0; i < size; i++) {
+        printf("%d\n", res[i]);
+      }
+  split(isEven, a, size_a, &a1, &size_a1, &a2, &size_a2);
+    printf("printing a1:\n");
+      for (int i = 0; i < size_a1; i++) {
+        printf("%d\n", a1[i]);
+      }
+    printf("printing a2:\n");
+      for (int i = 0; i < size_a2; i++) {
+        printf("%d\n", a2[i]);
+      }
+}
+
+//void strcpy(char* string1, char** copyTo) {
+//  *copyTo = string1;
+//  printf("%c", *copyTo[0]);
+//}
 
 
 int main(){
 
   testStringFunctions();
+  testNachklausur2019();
   return 0;
 }
